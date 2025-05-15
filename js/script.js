@@ -125,3 +125,59 @@ window.addEventListener('load', () => {
             }
     }
 });
+
+// --- Configuración del Contador ---
+// Establece la fecha y hora de lanzamiento (Año, Mes (0-11), Día, Hora, Minuto, Segundo)
+// Ejemplo: 31 de mayo de 2025 a las 10:00:00 AM
+const launchDate = new Date(2025, 4, 17, 11, 0, 0).getTime();
+
+// Elementos del DOM
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
+const countdownEl = document.getElementById('countdown');
+const launchMessageEl = document.getElementById('launchMessage');
+const subtitleTextEl = document.getElementById('subtitleText');
+
+// Actualizar el contador cada segundo
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    // Cálculos de tiempo
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Mostrar los resultados en los elementos
+    daysEl.textContent = formatTime(days);
+    hoursEl.textContent = formatTime(hours);
+    minutesEl.textContent = formatTime(minutes);
+    secondsEl.textContent = formatTime(seconds);
+
+    // Si la cuenta regresiva termina
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdownEl.style.display = 'none'; // Ocultar el contador
+        if(subtitleTextEl) { // Comprobar si el elemento existe antes de modificarlo
+                    subtitleTextEl.style.display = 'none'; // Ocultar el subtítulo
+                }
+        launchMessageEl.style.display = 'block'; // Mostrar mensaje de lanzamiento
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+    }
+}
+
+// Función para formatear el tiempo (agregar un cero al inicio si es menor que 10)
+function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+}
+
+// Llamada inicial para evitar el retraso de 1 segundo al cargar
+updateCountdown();

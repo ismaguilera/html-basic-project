@@ -35,6 +35,83 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .container {
+            /* Ajuste del contenedor para el tema oscuro */
+            /*background-color: rgba(30, 41, 59, 0.5);  Un tono ligeramente más claro de slate con transparencia */
+            padding: 2.5rem 2rem; /* Ajustado para móviles */
+            border-radius: 1rem;
+            /*box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);  Sombra un poco más pronunciada */
+            backdrop-filter: blur(10px);
+            max-width: 90%; /* Asegurar que no exceda el ancho de pantalla */
+            width: 600px; /* Ancho máximo para pantallas grandes */
+            /*border: 1px solid rgba(51, 65, 85, 0.7); /* Borde sutil para definir el contenedor */
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem; /* Espacio entre elementos del contador */
+            margin-top: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+        }
+        .countdown-item {
+            /* Ajuste de los items del contador para el tema oscuro */
+            background-color: rgba(51, 65, 85, 0.4); /* slate-700 con transparencia */
+            padding: .5rem; /* Ajustado para móviles */
+            border-radius: 0.8rem;
+            min-width: 100px; /* Ancho mínimo para cada item */
+            flex-basis: calc(25% - 4rem); /* Distribuir en 4 columnas con espacio */
+            box-sizing: border-box; /* Incluir padding y borde en el tamaño del elemento */
+        }
+        .countdown-item span {
+            font-size: 2.5rem; /* Ajustado para móviles */
+            font-weight: 900;
+            display: block;
+            line-height: 1;
+            color: #cbd5e1; /* Color de números (slate-300) */
+        }
+        .countdown-item p {
+            font-size: 0.8rem; /* Ajustado para móviles */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            opacity: 0.7; /* Texto de etiquetas un poco más sutil */
+            color: #94a3b8; /* Color de etiquetas (slate-400) */
+        }
+        .message-box {
+            /* Ajuste del mensaje de lanzamiento para el tema oscuro */
+            background-color: #121d2e; /* Un verde esmeralda que contraste bien */
+            color: #f0fdf4; /* Texto casi blanco para el mensaje */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: none; /* Oculto por defecto */
+        }
+
+        /* Media Queries para responsividad */
+        @media (min-width: 640px) { /* sm breakpoint de Tailwind */
+            .container {
+                padding: 1rem 1rem;
+            }
+            .countdown-item {
+                padding: 1.5rem;
+                min-width: 100px;
+            }
+            .countdown-item span {
+                font-size: 3.5rem;
+            }
+            .countdown-item p {
+                font-size: 0.875rem;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -69,8 +146,39 @@
         <section id="bienvenida" class="min-h-[calc(80vh-4rem)] flex flex-col justify-center items-center text-center bg-slate-900 text-white rounded-lg p-8 shadow-lg">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">¡Bienvenidos al Lanzamiento de REDIGS!</h1>
             <p class="text-xl md:text-2xl mb-6">Conectando experiencias para generar impacto juntos en el sistema de salud.</p>
+            
+            <div class="container">
+                <p class="subtitle" id="subtitleText">Quedan:</p>
+
+                <div id="countdown" class="countdown-timer">
+                    <div class="countdown-item">
+                        <span id="days">00</span>
+                        <p>Días</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">00</span>
+                        <p>Horas</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">00</span>
+                        <p>Minutos</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">00</span>
+                        <p>Segundos</p>
+                    </div>
+                </div>
+
+                <div id="launchMessage" class="message-box">
+                    <p>🚀 ¡La REDIGS ha sido lanzada! 🎉</p>
+                    <p>Gracias por acompañarnos hoy.</p>
+                </div>
+
+                <p class="mt-8 text-sm opacity-70">
+                    Mantente atento para más detalles.
+                </p>
+            </div>
             <img src="https://drive.google.com/thumbnail?id=1xBzMeJ_qmQtwjY19mUiqAN9-K1mPdWR8&sz=w1000" alt="REDIGS world">
-            <p class="text-lg">Gracias por acompañarnos hoy.</p>
         </section>
 
         <section id="proposito" class="py-12 px-6 bg-white rounded-lg shadow-md">
