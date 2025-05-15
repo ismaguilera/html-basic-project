@@ -1,14 +1,28 @@
+// --- Configuración del Contador ---
+// Establece la fecha y hora de lanzamiento (Año, Mes (0-11), Día, Hora, Minuto, Segundo)
+// Ejemplo: 17 de mayo de 2025 a las 11:00:00 AM
+const launchDate = new Date("May 17, 2025 11:30:00").getTime();
+
+// Al inicio del script o en una función de inicialización
+const navElement = document.querySelector('nav');
+const otherSections = document.querySelectorAll('main > section:not(#bienvenida)');
+const footerElement = document.querySelector('footer');
+const bienvenidaSection = document.getElementById('bienvenida'); // Ya lo tienes
  // --- Mobile menu toggle ---
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
+    /*mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+    });*/
+    mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+        // Opcional: gestionar aria-hidden en mobileMenu
+        mobileMenu.setAttribute('aria-hidden', isExpanded); 
     });
 }
-
-// --- Close mobile menu when a nav link is clicked ---
-// Combined with smooth scroll logic below
 
 // --- Intersection Observer for section animations and active nav link ---
 const sections = document.querySelectorAll('section');
@@ -126,10 +140,6 @@ window.addEventListener('load', () => {
     }
 });
 
-// --- Configuración del Contador ---
-// Establece la fecha y hora de lanzamiento (Año, Mes (0-11), Día, Hora, Minuto, Segundo)
-// Ejemplo: 17 de mayo de 2025 a las 11:00:00 AM
-const launchDate = new Date("May 17, 2025 11:00:00").getTime();
 
 // Elementos del DOM
 const daysEl = document.getElementById('days');
@@ -142,7 +152,7 @@ const subtitleTextEl = document.getElementById('subtitleText');
 
 // Actualizar el contador cada segundo
 const countdownInterval = setInterval(updateCountdown, 1000);
-
+/*
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = launchDate - now;
@@ -173,11 +183,87 @@ function updateCountdown() {
         secondsEl.textContent = '00';
     }
 }
-
+*/
 // Función para formatear el tiempo (agregar un cero al inicio si es menor que 10)
 function formatTime(time) {
     return time < 10 ? `0${time}` : time;
 }
 
 // Llamada inicial para evitar el retraso de 1 segundo al cargar
-updateCountdown();
+//updateCountdown();
+
+function setInitialPageView(distance) {
+    if (distance > 0) { // Si el contador está activo
+        if (navElement) navElement.classList.add('hidden');
+        otherSections.forEach(section => section.classList.add('hidden'));
+        if (footerElement) footerElement.classList.add('hidden');
+
+        // Asegurar que la sección de bienvenida esté visible y ajustada
+        if (bienvenidaSection) {
+            bienvenidaSection.classList.add('min-h-screen'); // Hacer que ocupe toda la pantalla
+            bienvenidaSection.classList.remove('min-h-[calc(80vh-4rem)]'); // Quitar altura anterior si es necesario
+        }
+         // Ocultar el padding-top del body mientras solo se muestra el contador
+        document.body.style.paddingTop = '0';
+
+    } else { // Si el contador ya terminó al cargar la página
+        if (navElement) navElement.classList.remove('hidden');
+        otherSections.forEach(section => section.classList.remove('hidden'));
+        if (footerElement) footerElement.classList.remove('hidden');
+        if (bienvenidaSection) {
+            bienvenidaSection.classList.remove('min-h-screen');
+            bienvenidaSection.classList.add('min-h-[calc(80vh-4rem)]'); // Restaurar altura original
+        }
+        // Restaurar el padding-top del body
+        document.body.style.paddingTop = '4rem'; // O el valor original del navbar
+        // La lógica existente para ocultar el contador y mostrar mensaje de lanzamiento ya está en updateCountdown
+    }
+}
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    // ... (cálculos de tiempo y actualización de elementos del contador) ...
+    // Cálculos de tiempo
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // (daysEl, hoursEl, etc. deben tener null checks como se menciona en Tarea 4.1)
+    if (daysEl) daysEl.textContent = formatTime(days);
+    if (hoursEl) hoursEl.textContent = formatTime(hours);
+    if (minutesEl) minutesEl.textContent = formatTime(minutes);
+    if (secondsEl) secondsEl.textContent = formatTime(seconds);
+
+
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        if (countdownEl) countdownEl.style.display = 'none';
+        if (subtitleTextEl) subtitleTextEl.style.display = 'none';
+        if (launchMessageEl) launchMessageEl.style.display = 'block';
+
+        // Restaurar valores a 00 si no están ya
+        if (daysEl) daysEl.textContent = '00';
+        if (hoursEl) hoursEl.textContent = '00';
+        if (minutesEl) minutesEl.textContent = '00';
+        if (secondsEl) secondsEl.textContent = '00';
+
+        // Mostrar el resto del contenido
+        if (navElement) navElement.classList.remove('hidden');
+        otherSections.forEach(section => section.classList.remove('hidden'));
+        if (footerElement) footerElement.classList.remove('hidden');
+        if (bienvenidaSection) {
+            bienvenidaSection.classList.remove('min-h-screen');
+            bienvenidaSection.classList.add('min-h-[calc(80vh-4rem)]'); // Restaurar altura
+        }
+        // Restaurar el padding-top del body
+        document.body.style.paddingTop = '4rem'; // O el valor original del navbar
+
+    }
+}
+
+// Llamada inicial para configurar la vista y evitar retraso
+const initialDistance = launchDate - new Date().getTime();
+setInitialPageView(initialDistance); // Configura la vista inicial
+updateCountdown(); // Llama para iniciar el contador o mostrar mensaje si ya terminó

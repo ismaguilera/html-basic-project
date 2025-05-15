@@ -3,117 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de lanzamiento de REDIGS. Conectando experiencias para generar impacto juntos en el sistema de salud. Únete a nuestra red.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="image/Logo_transparent.png">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Custom styles for active nav link */
-        .nav-active {
-            font-weight: 600;
-            color: #3b82f6; /* blue-500 */
-        }
-        /* Smooth scrolling for anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Add padding top to body to offset fixed navbar */
-        body {
-            padding-top: 4rem; /* Adjust based on navbar height */
-        }
-        /* Simple animation for sections */
-        section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .container {
-            /* Ajuste del contenedor para el tema oscuro */
-            /*background-color: rgba(30, 41, 59, 0.5);  Un tono ligeramente más claro de slate con transparencia */
-            padding: 2.5rem 2rem; /* Ajustado para móviles */
-            border-radius: 1rem;
-            /*box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);  Sombra un poco más pronunciada */
-            backdrop-filter: blur(10px);
-            max-width: 90%; /* Asegurar que no exceda el ancho de pantalla */
-            width: 600px; /* Ancho máximo para pantallas grandes */
-            /*border: 1px solid rgba(51, 65, 85, 0.7); /* Borde sutil para definir el contenedor */
-        }
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 1rem; /* Espacio entre elementos del contador */
-            margin-top: 2rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
-        }
-        .countdown-item {
-            /* Ajuste de los items del contador para el tema oscuro */
-            background-color: rgba(51, 65, 85, 0.4); /* slate-700 con transparencia */
-            padding: .5rem; /* Ajustado para móviles */
-            border-radius: 0.8rem;
-            min-width: 100px; /* Ancho mínimo para cada item */
-            flex-basis: calc(25% - 4rem); /* Distribuir en 4 columnas con espacio */
-            box-sizing: border-box; /* Incluir padding y borde en el tamaño del elemento */
-        }
-        .countdown-item span {
-            font-size: 2.5rem; /* Ajustado para móviles */
-            font-weight: 900;
-            display: block;
-            line-height: 1;
-            color: #cbd5e1; /* Color de números (slate-300) */
-        }
-        .countdown-item p {
-            font-size: 0.8rem; /* Ajustado para móviles */
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-top: 0.5rem;
-            opacity: 0.7; /* Texto de etiquetas un poco más sutil */
-            color: #94a3b8; /* Color de etiquetas (slate-400) */
-        }
-        .message-box {
-            /* Ajuste del mensaje de lanzamiento para el tema oscuro */
-            background-color: #121d2e; /* Un verde esmeralda que contraste bien */
-            color: #f0fdf4; /* Texto casi blanco para el mensaje */
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            margin-top: 2rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: none; /* Oculto por defecto */
-        }
-
-        /* Media Queries para responsividad */
-        @media (min-width: 640px) { /* sm breakpoint de Tailwind */
-            .container {
-                padding: 1rem 1rem;
-            }
-            .countdown-item {
-                padding: 1.5rem;
-                min-width: 100px;
-            }
-            .countdown-item span {
-                font-size: 3.5rem;
-            }
-            .countdown-item p {
-                font-size: 0.875rem;
-            }
-            h1 {
-                font-size: 3rem;
-            }
-            .subtitle {
-                font-size: 1.25rem;
-            }
-        }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -128,11 +25,11 @@
                 <a href="#beneficios" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Beneficios</a>
                 <a href="#inscripcion" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Inscripción</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white absolute top-16 left-0 right-0 shadow-md">
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute top-16 left-0 right-0 shadow-md" aria-hidden="true">
             <a href="#bienvenida" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Bienvenida</a>
             <a href="#proposito" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Propósito</a>
             <a href="#objetivos" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Objetivos</a>
@@ -169,17 +66,13 @@
                         <p>Segundos</p>
                     </div>
                 </div>
-
-                <div id="launchMessage" class="message-box">
-                    <p>🚀 ¡La REDIGS ha sido lanzada! 🎉</p>
-                    <p>Gracias por acompañarnos hoy.</p>
-                </div>
-
+                
+                <img src="image/redigs_world.gif" alt="Falló imagen de REDIGS world" class="block mx-auto">
                 <p class="mt-8 text-sm opacity-70">
                     Mantente atento para más detalles.
                 </p>
             </div>
-            <img src="image/redigs_world.gif" alt="REDIGS world">
+            
         </section>
 
         <section id="proposito" class="py-12 px-6 bg-white rounded-lg shadow-md">
@@ -257,16 +150,16 @@
                             <li>Instancia de hoy: Networking ágil, intercambio de experiencias, identificación de desafíos (Ej: Desarrollo Profesional, Fragmentación Sistemas, Optimización Procesos, etc.).</li>
                             <li>Próximos eventos: "Lanzamiento 2" (29 de mayo) y "Eficiencia operacional en Procesos de APS" (fines de junio).</li>
                             <li>Explorando grupos de trabajo temáticos (¡Inscríbete si te interesa!).</li>
-                            <li>Únete a nuestro <a href="https://www.linkedin.com/groups/12127483/" class="text-blue-600 hover:underline">grupo de LinkedIn</a>.</li>
+                            <li>Súmate a nuestro <a href="https://www.linkedin.com/groups/12127483/" class="text-blue-600 hover:underline"> grupo <i class="fab fa-linkedin text-blue-700 mr-2 fa-lg"></i></a>.</li>
                         </ul>
                     </div>
                 </div>
-                 <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
-                    <i class="fas fa-chart-line fa-fw text-teal-500 mt-1"></i>
-                    <div>
-                        <h3 class="font-semibold">Desarrollo de Propuestas de Mejora</h3>
-                        <p class="text-sm text-gray-600">Consultoría especializada para instituciones de salud.</p>
-                    </div>
+                <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
+                <i class="fas fa-chart-line fa-fw text-teal-500 mt-1"></i>
+                <div>
+                    <h3 class="font-semibold">Desarrollo de Propuestas de Mejora</h3>
+                    <p class="text-sm text-gray-600">Consultoría especializada para instituciones de salud.</p>
+                </div>
                 </div>
                  <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
                     <i class="fas fa-microphone-alt fa-fw text-teal-500 mt-1"></i>
@@ -339,11 +232,13 @@
             <a href="https://forms.gle/M9gJBGUCFeE3FPt39" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-blue-700 transition duration-300 text-lg mb-8">
                 ¡Quiero ser Miembro Asociado!
             </a>
-            <p class="text-lg mb-4">Responderemos todas tus dudas sobre el proceso a <a href="mailto:comunicaciones@redigs.org">Comunicaciones</a> </p>
+            <p class="text-lg mb-4">Responderemos todas tus dudas sobre el proceso a <a href="mailto:comunicaciones@redigs.org" class="hover:underline">Comunicaciones@redigs.org</a> </p>
             <p class="mb-6">Con tu móvil puedes acceder con el siguiente código QR</p>
-            <center><img src="image/qrcode_with_image.png" width="130"></center>
+            <div class="text-center">
+                <img src="image/qrcode_with_image.png" alt="Falló el código QR para inscripción" class="inline-block" width="130">
+            </div>
             <p class="text-sm mt-4">¡Gracias por tu asistencia!</p>
-            <p class="mb-6">Prontamente publicaremos nuestro sitio web REDIGS.</p>
+            <p class="mb-6">Prontamente publicaremos más información en nuestro sitio web.</p>
             
                         
         </section>
@@ -351,8 +246,11 @@
     </main>
 
     <footer class="bg-gray-800 text-white text-center p-4 mt-12">
-        <p>&copy; 2025 REDIGS - Red de Ingeniería y Gestión en Salud. Todos los derechos reservados.</p>
+        <p>&copy; <span id="copyright-year">2025</span>. Red de Ingeniería y Gestión en Salud (REDIGS). Todos los derechos reservados.</p>
     </footer>
+    <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    </script>
 
     <script src="js/script.js"></script>
 </body>
