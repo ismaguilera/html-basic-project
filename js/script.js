@@ -128,8 +128,8 @@ window.addEventListener('load', () => {
 
 // --- Configuración del Contador ---
 // Establece la fecha y hora de lanzamiento (Año, Mes (0-11), Día, Hora, Minuto, Segundo)
-// Ejemplo: 31 de mayo de 2025 a las 10:00:00 AM
-const launchDate = new Date(2025, 4, 17, 11, 0, 0).getTime();
+// Ejemplo: 17 de mayo de 2025 a las 11:00:00 AM
+const launchDate = new Date("May 17, 2025 11:00:00").getTime();
 
 // Elementos del DOM
 const daysEl = document.getElementById('days');
