@@ -1,5 +1,6 @@
 body {
     font-family: 'Inter', sans-serif;
+    padding-top: 4rem; /* Adjust based on navbar height */
 }
 /* Custom styles for active nav link */
 .nav-active {
@@ -9,10 +10,6 @@ body {
 /* Smooth scrolling for anchor links */
 html {
     scroll-behavior: smooth;
-}
-/* Add padding top to body to offset fixed navbar */
-body {
-    padding-top: 4rem; /* Adjust based on navbar height */
 }
 /* Simple animation for sections */
 section {
