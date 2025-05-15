@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for active nav link */
+        .nav-active {
+            font-weight: 600;
+            color: #3b82f6; /* blue-500 */
+        }
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Add padding top to body to offset fixed navbar */
+        body {
+            padding-top: 4rem; /* Adjust based on navbar height */
+        }
+        /* Simple animation for sections */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-md fixed top-0 left-0 right-0 z-50 h-16">
+        <div class="container mx-auto px-4 h-full flex justify-between items-center">
+            <div class="text-xl font-bold text-blue-600">Lanzamiento</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#bienvenida" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Bienvenida</a>
+                <a href="#proposito" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Propósito</a>
+                <a href="#objetivos" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Objetivos</a>
+                <a href="#actividades" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Actividades</a>
+                <a href="#beneficios" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Beneficios</a>
+                <a href="#inscripcion" class="text-gray-600 hover:text-blue-500 transition duration-300 nav-link">Inscripción</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute top-16 left-0 right-0 shadow-md">
+            <a href="#bienvenida" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Bienvenida</a>
+            <a href="#proposito" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Propósito</a>
+            <a href="#objetivos" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Objetivos</a>
+            <a href="#actividades" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Actividades</a>
+            <a href="#beneficios" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Beneficios</a>
+            <a href="#inscripcion" class="block px-4 py-2 text-gray-600 hover:bg-gray-100 nav-link">Inscripción</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 space-y-16">
+
+        <section id="bienvenida" class="min-h-[calc(80vh-4rem)] flex flex-col justify-center items-center text-center bg-slate-900 text-white rounded-lg p-8 shadow-lg">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">¡Bienvenidos al Lanzamiento de REDIGS!</h1>
+            <p class="text-xl md:text-2xl mb-6">Conectando experiencias para generar impacto juntos en el sistema de salud.</p>
+            <img src="https://drive.google.com/thumbnail?id=1xBzMeJ_qmQtwjY19mUiqAN9-K1mPdWR8&sz=w1000" alt="REDIGS world">
+            <p class="text-lg">Gracias por acompañarnos hoy.</p>
+        </section>
+
+        <section id="proposito" class="py-12 px-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-3xl font-semibold text-center mb-8 text-blue-700">Nuestro Propósito</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-lg mb-6">Promover <span class="font-semibold">sistemas de salud equitativos y de excelencia operacional</span>, integrando la ingeniería y la gestión en el sector.</p>
+                <div class="p-6 bg-blue-50 rounded-lg inline-block mb-8">
+                     <p class="text-xl font-bold text-blue-800">"Conecta tu experiencia en la Gestión del Sistema de Salud"</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="p-4 border border-blue-200 rounded-lg">
+                        <i class="fas fa-lightbulb fa-2x text-blue-500 mb-3"></i>
+                        <h3 class="font-semibold mb-2">Impulsa la Ciencia de la Gestión</h3>
+                        <p class="text-sm text-gray-600">Contribuir al avance del conocimiento científico en Gestión.</p>
+                    </div>
+                    <div class="p-4 border border-blue-200 rounded-lg">
+                        <i class="fas fa-rocket fa-2x text-blue-500 mb-3"></i>
+                        <h3 class="font-semibold mb-2">Conecta con Innovación</h3>
+                        <p class="text-sm text-gray-600">Formar parte de una red de profesionales y proyectos innovadores.</p>
+                    </div>
+                    <div class="p-4 border border-blue-200 rounded-lg">
+                        <i class="fas fa-heartbeat fa-2x text-blue-500 mb-3"></i>
+                        <h3 class="font-semibold mb-2">Impacta en el Sistema de Salud</h3>
+                        <p class="text-sm text-gray-600">Generar un impacto positivo a través de la ciencia y la tecnología en el sector Salud.</p>
+                    </div>
+                </div>
+                 <p class="mt-8 text-md text-gray-600">Somos una <span class="font-semibold">corporación científico-técnica sin ánimo de lucro</span>.</p>
+            </div>
+        </section>
+
+        <section id="objetivos" class="py-12 px-6">
+            <h2 class="text-3xl font-semibold text-center mb-8 text-indigo-700">Objetivos 2025</h2>
+            <div class="max-w-3xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <i class="fas fa-bullhorn fa-2x text-indigo-500 mb-3"></i>
+                    <h3 class="font-semibold mb-2">Visibilidad</h3>
+                    <p class="text-sm text-gray-600">Aumentar el reconocimiento de REDIGS en la comunidad científico-técnica.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <i class="fas fa-users fa-2x text-indigo-500 mb-3"></i>
+                    <h3 class="font-semibold mb-2">Comunidad</h3>
+                    <p class="text-sm text-gray-600">Fortalecer la colaboración entre miembros actuales y potenciales.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <i class="fas fa-star fa-2x text-indigo-500 mb-3"></i>
+                    <h3 class="font-semibold mb-2">Generar valor</h3>
+                    <p class="text-sm text-gray-600">Presentar de forma clara y atractiva el valor de la membresía.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="actividades" class="py-12 px-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-3xl font-semibold text-center mb-8 text-teal-700">Programa de Actividades</h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
+                    <i class="fas fa-calendar-alt fa-fw text-teal-500 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold">Eventos, Seminarios y Capacitaciones</h3>
+                        <p class="text-sm text-gray-600">Organización de instancias como este lanzamiento y futuros congresos.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
+                    <i class="fas fa-book-open fa-fw text-teal-500 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold">Generación y Difusión de Conocimiento</h3>
+                        <p class="text-sm text-gray-600">Boletines, estudios, investigaciones, webinars, sitio web.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
+                    <i class="fas fa-project-diagram fa-fw text-teal-500 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold">Redes de Contacto y Colaboración</h3>
+                        <p class="text-sm text-gray-600">Fomento del networking y la comunidad a través de eventos y plataformas.</p>
+                         <ul class="list-disc list-inside text-xs text-gray-500 mt-2 space-y-1">
+                            <li>Instancia de hoy: Networking ágil, intercambio de experiencias, identificación de desafíos (Ej: Desarrollo Profesional, Fragmentación Sistemas, Optimización Procesos, etc.).</li>
+                            <li>Próximos eventos: "Lanzamiento 2" (29 de mayo) y "Eficiencia operacional en Procesos de APS" (fines de junio).</li>
+                            <li>Explorando grupos de trabajo temáticos (¡Inscríbete si te interesa!).</li>
+                            <li>Únete a nuestro <a href="https://www.linkedin.com/groups/12127483/" class="text-blue-600 hover:underline">grupo de LinkedIn</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
+                    <i class="fas fa-chart-line fa-fw text-teal-500 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold">Desarrollo de Propuestas de Mejora</h3>
+                        <p class="text-sm text-gray-600">Consultoría especializada para instituciones de salud.</p>
+                    </div>
+                </div>
+                 <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-50 transition duration-300">
+                    <i class="fas fa-microphone-alt fa-fw text-teal-500 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold">Referente Técnico-Científico</h3>
+                        <p class="text-sm text-gray-600">Ser una voz experta en el sector a través de columnas y documentos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="py-12 px-6">
+            <h2 class="text-3xl font-semibold text-center mb-8 text-purple-700">Propuesta de Valor: ¿Por qué unirte?</h2>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex items-start space-x-3">
+                    <i class="fas fa-users text-purple-500 fa-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-1">Networking y Comunidad</h3>
+                        <p class="text-sm text-gray-600">Amplía tu red profesional con expertos en salud y gestión.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex items-start space-x-3">
+                    <i class="fas fa-brain text-purple-500 fa-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-1">Desarrollo Profesional</h3>
+                        <p class="text-sm text-gray-600">Accede a capacitaciones, eventos y oportunidades de movilidad profesional.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex items-start space-x-3">
+                    <i class="fas fa-book text-purple-500 fa-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-1">Acceso a Recursos Exclusivos</h3>
+                        <p class="text-sm text-gray-600">Disfruta de talleres, seminarios, publicaciones y más.</p>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex items-start space-x-3">
+                    <i class="fas fa-cogs text-purple-500 fa-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-1">Colaboración en Proyectos</h3>
+                        <p class="text-sm text-gray-600">Participa en iniciativas innovadoras y consultoría especializada.</p>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex items-start space-x-3">
+                    <i class="fas fa-bullseye text-purple-500 fa-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-1">Contribución con Impacto</h3>
+                        <p class="text-sm text-gray-600">Ayuda a dar forma al futuro del área y contribuye a nuestra misión.</p>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 flex items-start space-x-3">
+                    <i class="fas fa-certificate text-purple-500 fa-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-1">Beneficios Exclusivos</h3>
+                        <p class="text-sm text-gray-600">Accede a ventajas únicas reservadas para miembros asociados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inscripcion" class="py-12 px-6 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-lg text-center">
+            <h2 class="text-3xl font-semibold mb-6">¿Listo para Unirte?</h2>
+            <i class="fas fa-user-plus fa-3x mb-4"></i>
+            <p class="text-lg mb-4">Este evento es el punto de partida. Conviértete en Miembro Asociado.</p>
+            <p class="mb-6">Completa el formulario para registrar tu interés o actualizar tu membresía.</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <i class="fas fa-lightbulb fa-2x text-blue-500"></i>
+                <i class="fas fa-rocket fa-2x text-blue-500"></i>
+                <i class="fas fa-heartbeat fa-2x text-blue-500"></i>
+            </div>
+            <a href="https://forms.gle/M9gJBGUCFeE3FPt39" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-blue-700 transition duration-300 text-lg mb-8">
+                ¡Quiero ser Miembro Asociado!
+            </a>
+            <p class="text-lg mb-4">Responderemos todas tus dudas sobre el proceso a <a href="mailto:comunicaciones@redigs.org">Comunicaciones</a> </p>
+            <p class="mb-6">Con tu móvil puedes acceder con el siguiente código QR</p>
+            <center><img src="https://drive.google.com/thumbnail?id=124ipVaJ9YG5KMEqVgWZxdjnlnjQmBkf_" width="130"></center>
+            <p class="text-sm mt-4">¡Gracias por tu asistencia!</p>
+            <p class="mb-6">Prontamente publicaremos nuestro sitio web REDIGS.</p>
+            
+                        
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-12">
+        <p>&copy; 2025 REDIGS - Red de Ingeniería y Gestión en Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
