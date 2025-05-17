@@ -3,7 +3,7 @@
 // ==========================================================================
 
 // Establece la fecha y hora de lanzamiento (Año, Mes (0-11), Día, Hora, Minuto, Segundo)
-const launchDate = new Date("May 17, 2025 11:30:00").getTime();
+const launchDate = new Date("May 16, 2025 11:30:00").getTime();
 
 // Elementos del DOM para el contador
 const daysEl = document.getElementById('days');
