@@ -79,6 +79,30 @@ section.visible {
     display: none; /* Oculto por defecto */
 }
 
+/*** Team ***/
+.team-item .team-text {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 17px solid var(--light);
+    border-radius: 250px;
+    transition: .5s;
+}
+
+.team-item:hover .team-text {
+    border-color: var(--primary);
+}
+.p-4 {
+  padding: .25rem;
+}
+
 /* Media Queries para responsividad */
 @media (min-width: 640px) { /* sm breakpoint de Tailwind */
     .container {
